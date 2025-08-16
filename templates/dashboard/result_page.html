@@ -1,0 +1,86 @@
+{% extends "include/base.html" %}
+
+{% block content %}
+{% load static %}
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result-container {
+            width: 80%;
+            margin: 0 auto;
+            border: 1px solid #28a745;
+            padding: 20px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .student-info p {
+            margin: 5px 0;
+        }
+    </style>
+<style>
+    .check{
+        background: #28a745;
+        color: #fff;
+        padding: 10px 12px;
+        border-radius: 5px;
+    }
+</style>
+
+
+<main class="main" id="main">
+
+       <div class="result-container">
+        <h1>Student Result Sheet</h1>
+
+        <div class="student-info">
+            <p><strong>Student Name:</strong>{{ student.name }} </p>
+            <p><strong>Semester:</strong> {{ semester }}</p>
+            <p><strong>Roll Number:</strong> 001</p>
+            <p><strong>Academic Year:</strong> {{ session }}</p>
+            <p><strong>Course of Study:</strong> Computer Science</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Course Title</th>
+                    <th>Score</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in results %}
+  <tr>
+    <td>{{ r.course.code }}</td>
+    <td>{{ r.course.name }}</td>
+    <td>{{ r.score }}</td>
+    <td>{{ r.grade }}</td>
+  </tr>
+  {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+{% endblock content %}
